@@ -26,7 +26,7 @@
                         <div id="facet-main" class="product-facet__main anchor" role="region" aria-live="polite">
                             <div class="product-facet__meta-bar anchor">
                                 <span class="product-facet__meta-bar-item product-facet__meta-bar-item--count"
-                                    role="status">9 sản phẩm</span>
+                                    role="status">{{$count}} sản phẩm</span>
                                 <div class="product-facet__meta-bar-item product-facet__meta-bar-item--sort">
                                     <!-- /snippets/collection-sorting.liquid -->
                                     @include('frontend.collection.soft_by')
@@ -44,11 +44,44 @@
                                 </div>
                             </div>
                             @include('frontend.collection.product_list')
-                            <div id="pagination">
-                                <ul class="pagination list-unstyled">
-                                    <li class="pagination__nav-item active"><a href="#" title="">1</a></li>
-                                </ul>
-                            </div>
+                             @if ($product->hasPages())
+                                <div id="pagination">
+                                    <ul class="pagination list-unstyled">
+                                        {{-- Previous Page Link --}}
+                                        @if ($product->onFirstPage())
+                                            <li class="disabled"><span>&laquo;</span></li>
+                                        @else
+                                            <li><a href="{{ $product->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+                                        @endif
+
+                                        {{-- Pagination items --}}
+                                        @foreach ($product as $item)
+                                            {{-- "Three Dots" Separator --}}
+                                            @if (is_string($item))
+                                                <li class="disabled"><span>{{ $item }}</span></li>
+                                            @endif
+
+                                            {{-- Array Of Links --}}
+                                            @if (is_array($item))
+                                                @foreach ($item as $page => $url)
+                                                    @if ($page == $product->currentPage())
+                                                        <li class="pagination__nav-item active"><a href="#" title="">{{ $page }}</a></li>
+                                                    @else
+                                                        <li><a href="{{ $url }}" title="">{{ $page }}</a></li>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+
+                                        {{-- Next Page Link --}}
+                                        @if ($product->hasMorePages())
+                                            <li><a href="{{ $product->nextPageUrl() }}" rel="next">&raquo;</a></li>
+                                        @else
+                                            <li class="disabled"><span>&raquo;</span></li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
                     </product-facet>
                 </div>

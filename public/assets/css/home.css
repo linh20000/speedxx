@@ -68,6 +68,7 @@
     --section-blocks-overlay-opacity: 0.05;
 
 }
+.banner_hide{display:none !important;}
 
 .slide-custom-font split-lines {
     font-family: Lobster, cursive;

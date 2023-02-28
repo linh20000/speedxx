@@ -42,7 +42,8 @@
             </button>
             <collapsible-content open id="block-product-page-description-content" class="collapsible">
                 <div class="product-tabs__tab-item-content rte">
-                <p><strong>Chất liệu:&nbsp;</strong>vải tổng hợp&nbsp;cao cấp<br><strong>Kiểu dáng:</strong>&nbsp;đầm thiết kế dáng chữ A dài qua gối, nhún ngực, 2 quai bản to, tone màu xanh&nbsp;trơn</p><p><strong>Phù hợp:&nbsp;</strong>đi làm, sự kiện, hay đi dạo phố, tạo vẻ trẻ trung nữ tính cho người mặc.<br><strong>Sản phẩm thuộc dòng sản phẩm:&nbsp;</strong>&nbsp;NEM NEW<br><strong>Thông tin người mẫu:</strong>&nbsp;mặc sản phẩm size 2</p>                    </div>
+                    {!!  $product->description !!}
+                </div>
             </collapsible-content>
             </div>
             <div hidden id="block-product-page-reviews" class="product-tabs__tab-item-wrapper" >

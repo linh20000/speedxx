@@ -15,7 +15,7 @@
                         Đầm dạ tiệc
                     </button>
                     <button type="button" class="tabs-nav__item heading heading--small" aria-expanded="false" aria-controls="#tab-2">
-                        Đầm mùa thu
+                        Đầm xuông
                     </button>
                     <button type="button" class="tabs-nav__item heading heading--small" aria-expanded="false" aria-controls="#tab-3">
                         Đầm Dáng A
@@ -31,7 +31,9 @@
         <product-list stagger-apparition  id="#tab-1"  class="product-list product-list--center">
             <div class="scroller">
             <div class="product-list__inner product-list__inner--scroller hide-scrollbar">
-                @include('frontend.component.product_item')
+                @foreach ($product_prom_dresses as $item)
+                    @include('frontend.component.product_item')
+                @endforeach
             </div>
             </div>
             <prev-next-buttons class="product-list__prev-next hidden-pocket" style="--smallest-image-aspect-ratio: 1">
@@ -52,7 +54,9 @@
         <product-list stagger-apparition  id="#tab-2"  class="product-list product-list--center">
             <div class="scroller">
             <div class="product-list__inner product-list__inner--scroller hide-scrollbar">
-                @include('frontend.component.product_item')
+                @foreach ($product_dress_empty as $item)
+                    @include('frontend.component.product_item')
+                @endforeach
             </div>
             </div>
             <prev-next-buttons class="product-list__prev-next hidden-pocket" style="--smallest-image-aspect-ratio: 1">
@@ -73,7 +77,9 @@
         <product-list stagger-apparition  id="#tab-3"  class="product-list product-list--center">
             <div class="scroller">
             <div class="product-list__inner product-list__inner--scroller hide-scrollbar">
-                @include('frontend.component.product_item')
+                @foreach ($product_shape_a as $item)
+                    @include('frontend.component.product_item')
+                @endforeach
             </div>
             </div>
             <prev-next-buttons class="product-list__prev-next hidden-pocket" style="--smallest-image-aspect-ratio: 1">

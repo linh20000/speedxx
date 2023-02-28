@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Repository\CategoryRepository;
 use Illuminate\Http\Request;
-use App\Models\Category;use Illuminate\Support\Facades\Validator;
+use App\Models\Category;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
@@ -45,7 +46,7 @@ class CategoryController extends Controller
 
     public function get_category() 
     {
-        $categories_list = $this->categoryRepository->getAll();
+        $categories_list = $this->categoryRepository->get_paginate_8();
         $dataLength = count($categories_list);
         return view('backend.category.list', ['breadcrumb'=>'Danh sách danh mục'], compact('categories_list', 'dataLength'));
     }
@@ -74,6 +75,12 @@ class CategoryController extends Controller
         $data = $request->all();
         $this->categoryRepository->update_category($old_data, $data);
         return redirect(route('admin.category'))->with('success', 'Cập nhật thành công');
+    }
+    public function deleteCategory($id)
+    {
+        $category = $this->categoryRepository->find_by_id($id);
+        $category->delele();
+        return back()->with('success', 'Xóa thành công danh mục');
     }
 }
     

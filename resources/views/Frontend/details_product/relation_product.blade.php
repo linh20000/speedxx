@@ -3,7 +3,9 @@
     <div class="scroller">
     <div class="scroller__inner">
         <div class="product-content__featured-products-list">
-            @include('frontend.component.product_item')
+            @foreach ($product_relation as $item)
+                @include('frontend.component.product_item')
+            @endforeach
         </div>
     </div>
     </div>

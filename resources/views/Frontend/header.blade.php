@@ -53,17 +53,17 @@
                         <desktop-navigation>
                             <ul class="header__linklist list--unstyled hidden-pocket hidden-lap" role="list">
                                 <li class="header__linklist-item " data-item-title="Trang chủ">
-                                    <a class="header__linklist-link link--animated" href="index.html">
+                                    <a class="header__linklist-link link--animated" href="{{route('home')}}">
                                         Trang chủ </a>
                                 </li>
                                 <li class="header__linklist-item has-dropdown" data-item-title="Bộ sưu tập">
-                                    <a class="header__linklist-link link--animated" href="collections/all.html"
+                                    <a class="header__linklist-link link--animated" href=""
                                         aria-controls="desktop-menu-2" aria-expanded="false">
                                         Bộ sưu tập </a>
                                     <ul hidden id="desktop-menu-2" class="nav-dropdown  list--unstyled" role="list">
                                         @foreach ($categories as $category)
                                             <li class="nav-dropdown__item has-dropdown">
-                                                <a class="nav-dropdown__link link--faded" href="index.html"
+                                                <a class="nav-dropdown__link link--faded" href=""
                                                     aria-controls="desktop-menu-2-1" aria-expanded="false">
                                                     {{$category->name}}
                                                     @if ($category->child->isEmpty())
@@ -131,10 +131,10 @@
                         </div>
                     </nav>
                     <!-- LOGO PART -->
-                    <span class="header__logo"> <a class="header__logo-link block w-max" href="index.html">
+                    <span class="header__logo"> <a class="header__logo-link block w-max" href="{{route('home')}}">
                             <span class="visually-hidden">speedx fashion</span>
                             <img class="header__logo-image block w-max"
-                                src="../theme.hstatic.net/200000542485/1000893090/14/logocf6d.png?v=3035"
+                                src="{{asset('theme.hstatic.net/200000542485/1000893090/14/logocf6d.png?v=3035')}}"
                                 alt="" width="150" height="42">
                         </a>
                     </span>

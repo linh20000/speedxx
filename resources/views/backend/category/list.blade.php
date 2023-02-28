@@ -183,6 +183,9 @@
     <div>
 </div>
 </div>
+    <div class="d-flex justify-content-center">
+        {{ $categories_list->links('pagination::bootstrap-4') }}
+    </div>
 <!-- /.card -->
 </section>
 @endsection

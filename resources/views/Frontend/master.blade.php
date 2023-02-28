@@ -115,6 +115,7 @@
         });
       }
     </script>
+			<meta name='csrf-token' content="{{csrf_token()}}">
     <script src="{{asset('hstatic.net/0/0/global/design/js/jquery.min.1.11.0.js')}}"></script>
     <script src="{{asset('hstatic.net/0/0/global/option_selection.js')}}" type='text/javascript'></script>
     <script src='{{asset('hstatic.net/0/0/global/api.jquery.js')}}' type='text/javascript'></script>
@@ -123,7 +124,17 @@
     <script src="{{asset('theme.hstatic.net/200000542485/1000893090/14/vendorcf6d.js?v=3035')}}" defer></script>
     <script src="{{asset('theme.hstatic.net/200000542485/1000893090/14/themecf6d.js?v=3035')}}" defer></script>
 	  <link rel="preload" as="script" href="{{asset('theme.hstatic.net/200000542485/1000893090/14/filtercf6d.js?v=3035')}}">
+    <script src="//hstatic.net/0/0/global/design/js/jquery.min.1.11.0.js"></script>
+    <script src='//hstatic.net/0/0/global/option_selection.js' type='text/javascript'></script>
+		<script src='//hstatic.net/0/0/global/api.jquery.js' type='text/javascript'></script>
+    <link rel="stylesheet" href="//theme.hstatic.net/200000542485/1000893090/14/theme.css?v=3035">
+	  <link rel="stylesheet" href="//theme.hstatic.net/200000542485/1000893090/14/theme.custom.css?v=3035">
+    <script src="//theme.hstatic.net/200000542485/1000893090/14/vendor.js?v=3035" defer></script>
+    <script src="//theme.hstatic.net/200000542485/1000893090/14/theme.js?v=3035" defer></script>
     <link rel="stylesheet" href="{{asset('assets/css/home.css')}}">
+    <link href="path/to/iziToast.min.css" rel="stylesheet">
+    <script src="path/to/iziToast.min.js"></script>
+    @yield('script')
     <script type='text/javascript'>
       //<![CDATA[
       if ((typeof Haravan) === 'undefined') {

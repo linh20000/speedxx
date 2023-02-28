@@ -20,11 +20,27 @@
           </li>
           {{--  --}}
           </li>
-           <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Danh mục</span></a>
+           <li class=" nav-item {{ request()->is('admin/category') ||  request()->is('admin/category/create')  ? 'has-sub open' : '' }}"><a class="d-flex align-items-center" href=""><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Danh mục</span></a>
             <ul class="menu-content">
-              <li><a class="d-flex align-items-center" href="{{route('admin.category')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Quản lý danh mục</span></a>
+              <li><a class="d-flex align-items-center {{ request()->is('admin/category') ? 'bg-primary shadow-lg shadow-primary/30 rounded ' : '' }}" href="{{route('admin.category')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Quản lý danh mục</span></a>
               </li>
-              <li><a class="d-flex align-items-center" href="{{route('admin.createCategory')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Thêm danh mục </span></a>
+              <li><a class="d-flex align-items-center {{ request()->is('admin/category/create') ? 'bg-primary shadow-lg shadow-primary/30 rounded ' : '' }}" href="{{route('admin.createCategory')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Thêm danh mục </span></a>
+              </li>
+            </ul>
+          </li>
+          <li class=" nav-item {{ request()->is('admin/banner') ||  request()->is('admin/banner/create')  ? 'has-sub open' : '' }}"><a class="d-flex align-items-center" href=""><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Banner slide</span></a>
+            <ul class="menu-content">
+              <li><a class="d-flex align-items-center {{ request()->is('admin/banner') ? 'bg-primary shadow-lg shadow-primary/30 rounded ' : '' }}" href="{{route('admin.Banner')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Quản lý banner</span></a>
+              </li>
+              <li><a class="d-flex align-items-center {{ request()->is('admin/banner/create') ? 'bg-primary shadow-lg shadow-primary/30 rounded ' : '' }}" href="{{route('admin.createBanner')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Thêm banner </span></a>
+              </li>
+            </ul>
+          </li>
+          <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Sản phẩm</span></a>
+            <ul class="menu-content">
+              <li><a class="d-flex align-items-center" href="{{route('admin.showProductList')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Quản lý sản phẩm</span></a>
+              </li>
+              <li><a class="d-flex align-items-center" href="{{route('admin.createProduct')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Thêm sản phẩm </span></a>
               </li>
             </ul>
           </li>
