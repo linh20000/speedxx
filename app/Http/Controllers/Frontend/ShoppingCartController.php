@@ -6,7 +6,7 @@ use App\Http\Repository\ProductRepository;
 use App\Http\Repository\CategoryRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Gloudemans\Shoppingcart\Facades\Cart;
 class ShoppingCartController extends Controller
 {
     private  $productRepository, $categoryRepository;
@@ -31,5 +31,39 @@ class ShoppingCartController extends Controller
             'color.required' => 'Vui lòng chọn màu sắc',
         ]);
         $product = $this->productRepository->find($request->productId);
+        if (!$product) {
+            return response()->json(['status' => 'error', 'message' => 'Product not found']);
+        }
+        Cart::add([
+            'id' => $product->id,
+            'name'=> $product->name,
+            'price' => (int)($product->sale_price),
+            'qty'=> (int)$request['quantity'],
+            'weight'=>1,
+            'options'=>[
+                'thumbnail'=>$product->thumbnail_1,
+                'old_price'=>(int)($product->old_price),
+                'color' => $request['color'],
+                'size'=>$request['size'],
+            ]
+        ]);
+        $cartHtml = $this->getCartHtml();
+        return response()->json(['success'=>'Thêm giỏ hàng thành công', 'quantity' => Cart::count(), 'cart_html' => $cartHtml, 'content' => Cart::content()]);
+    }
+    public function deleteAjax(Request $request)
+    {
+        Cart::remove($request->rowId);
+        return response()->json(['status'=> 'success', 'quantity' => Cart::count()]);
+    }
+    public function getCartHtml()
+    {
+        $cartHtml = view('Frontend.cart')->render();
+        return response()->json(['cartHtml' => $cartHtml]);
+    }
+
+    public function payment() 
+    {
+        $categories = $this->categoryRepository->get_four_category_with_child();
+        return view('Frontend.payment.index', compact('categories'));
     }
 }

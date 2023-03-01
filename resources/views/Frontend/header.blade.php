@@ -57,13 +57,13 @@
                                         Trang chủ </a>
                                 </li>
                                 <li class="header__linklist-item has-dropdown" data-item-title="Bộ sưu tập">
-                                    <a class="header__linklist-link link--animated" href=""
+                                    <a class="header__linklist-link link--animated" style="cursor:pointer;"
                                         aria-controls="desktop-menu-2" aria-expanded="false">
                                         Bộ sưu tập </a>
                                     <ul hidden id="desktop-menu-2" class="nav-dropdown  list--unstyled" role="list">
                                         @foreach ($categories as $category)
                                             <li class="nav-dropdown__item has-dropdown">
-                                                <a class="nav-dropdown__link link--faded" href=""
+                                                <a class="nav-dropdown__link link--faded" href="{{route('collection_categories',[$category->id, Str::slug($category->name)])}}"
                                                     aria-controls="desktop-menu-2-1" aria-expanded="false">
                                                     {{$category->name}}
                                                     @if ($category->child->isEmpty())
@@ -85,7 +85,7 @@
                                                     role="list">
                                                     @foreach ($category->child as $category_child)
                                                         <li class="nav-dropdown__item">
-                                                            <a class="nav-dropdown__link link--faded" href="">{{$category_child->name}}</a>
+                                                            <a class="nav-dropdown__link link--faded" href="{{route('collection_categories',[$category_child->id, Str::slug($category_child->name)])}}">{{$category_child->name}}</a>
                                                         </li>
                                                     @endforeach
                                                     </ul>
@@ -171,7 +171,7 @@
                                     <path d="M7 4v0a3 3 0 003 3v0a3 3 0 003-3v0" fill="none" stroke="currentColor"
                                         stroke-width="2"></path>
                                 </svg>
-                                <cart-count class="header__cart-count header__cart-count--floating bubble-count">0
+                                <cart-count class="header__cart-count header__cart-count--floating bubble-count">{{Cart::count()}}
                                 </cart-count>
                             </a>
                         </div>

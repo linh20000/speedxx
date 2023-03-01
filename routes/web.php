@@ -82,9 +82,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 });
 
 Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'home'])->name('home');
-Route::get('/trang-chu', [App\Http\Controllers\Frontend\HomeController::class, 'home'])->name('home');
 Route::get('/san-pham', [App\Http\Controllers\Frontend\CollectionController::class , 'collectionAll'])->name('collection_all');
 Route::get('/san-pham-{id}-{slug}', [App\Http\Controllers\Frontend\CollectionController::class, 'collectionCategory'])->name('collection_categories');
 Route::get('/san-pham/{id}-{slug}', [App\Http\Controllers\Frontend\DetailsController::class, 'show_details'])->name('show_details');
 Route::get('/gio-hang', [App\Http\Controllers\Frontend\ShoppingCartController::class, 'shopping_cart'])->name('shopping_cart');
 Route::post('them-gio-hang', [App\Http\Controllers\Frontend\ShoppingCartController::class, 'addCartAjax'])->name('addCart.ajax');
+Route::POST('/xoa-gio-hang', [App\Http\Controllers\Frontend\ShoppingCartController::class, 'deleteAjax'])->name('deleteCart.ajax');
+Route::get('/thanh-toan', [App\Http\Controllers\Frontend\ShoppingCartController::class, 'payment'])->name('show_payment');

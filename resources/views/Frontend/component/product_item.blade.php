@@ -33,12 +33,12 @@
         </a>
         <div class="product-item__quick-form">
             <button is="toggle-button" loader
-                aria-controls="product-section-collection-main--1041340737-drawer"
+                aria-controls="product-product_tab_1-{{$item->id}}-drawer"
                 aria-expanded="false"
                 class="button button--outline button--text button--full  hidden-touch hidden-phone">Xem
                 nhanh</button>
             <button is="toggle-button"
-                aria-controls="product-section-collection-main--1041340737-drawer"
+                aria-controls="product-product_tab_1-{{$item->id}}-drawer"
                 aria-expanded="false"
                 class="product-item__quick-buy-button hidden-no-touch hidden-phone">
                 <span class="visually-hidden">Xem nhanh</span>
@@ -76,7 +76,7 @@
             href=""
             class="popover popover--quick-buy hidden-tablet-and-up">
         </quick-buy-popover>
-        {{-- <quick-buy-drawer id="product-product_tab_1--{{$item->id}}-drawer" class="drawer drawer--large drawer--quick-buy hidden-phone" open="">
+        <quick-buy-drawer id="product-product_tab_1-{{$item->id}}-drawer" class="drawer drawer--large drawer--quick-buy hidden-phone" >
             <cart-notification hidden="" class="cart-notification cart-notification--drawer"></cart-notification>
             <span class="drawer__overlay"></span>
             <header class="drawer__header">
@@ -89,7 +89,7 @@
             </header>
             <div class="drawer__content">
                 <div class="quick-buy-product">
-                    <img sizes="114px" class="quick-buy-product__image" alt="" src="https://product.hstatic.net/200000542485/product/210_74b43e5e2c454a26bd9dfa429f2f637d_master_result_6ae53fb1edfe458485360a46e0553ecb.png" srcset="//product.hstatic.net/200000542485/product/210_74b43e5e2c454a26bd9dfa429f2f637d_master_result_6ae53fb1edfe458485360a46e0553ecb_compact.png 160w,//product.hstatic.net/200000542485/product/210_74b43e5e2c454a26bd9dfa429f2f637d_master_result_6ae53fb1edfe458485360a46e0553ecb_medium.png 240w,//product.hstatic.net/200000542485/product/210_74b43e5e2c454a26bd9dfa429f2f637d_master_result_6ae53fb1edfe458485360a46e0553ecb_large.png 480w">
+                    <img sizes="114px" class="quick-buy-product__image" alt="" src="{{asset($item->thumbnail_1)}}" srcset="{{asset($item->thumbnail_1)}} 160w,{{asset($item->thumbnail_1)}} 240w,{{asset($item->thumbnail_1)}} 480w">
                     <div class="quick-buy-product__info ">
                         <product-meta form-id="product-form-quick-buy-drawer-1041340874" unit-price-class="text--xsmall" class="product-item-meta">
                             <a href="{{route('show_details', [$item->id, Str::slug($item->name)])}}" class="product-item-meta__title title">{{$item->name}}</a>
@@ -110,19 +110,16 @@
                     <product-variants handle="vay-xinh-bo-suu-tap-he-thu-dong" form-id="product-form-quick-buy-drawer-1041340874" class="product-form__variants">
                         <div class="product-form__option-selector" data-selector-type="color">
                             <div class="product-form__option-info">
-                            <span class="product-form__option-name">Màu sắc:</span>
-                                <span id="option-quick-buy-drawer-1041340874-1-value" class="product-form__option-value">tím</span>
-                            </div>
-                            <div class="color-swatch-list">
-                                @foreach (array_keys(JSON_decode($item->color)) as $key)
+                                <span class="product-form__option-name">Màu sắc: </span>
+                                 @foreach (array_keys(JSON_decode($item->color)) as $key)
                                     <div class="color-swatch ">
-                                        <input class="color-swatch__radio visually-hidden" type="radio" name="color" form="product-form-quick-buy-drawer-{{$key}}" id="option-quick-buy-drawer-{{$key}}-1-1" value="{{JSON_decode($item->color)[$key]}}" checked="checked" data-bind-value="option-quick-buy-drawer-{{$key}}-1-value" data-gtm-form-interact-field-id="3">
-                                        <label class="color-swatch__item" for="option-quick-buy-drawer-1041340874-1-1" style="background-color: {{JSON_decode($item->color)[$key]}}">
-                                        <span class="visually-hidden"> {{JSON_decode($item->color)[$key]}}</span>
+                                        <label class="color-swatch__item color"  data-value="{{JSON_decode($item->color)[$key]}}"  style="background-color: {{JSON_decode($item->color)[$key]}}">
+                                        <span class="visually-hidden">{{JSON_decode($item->color)[$key]}}</span>
                                         </label>
                                     </div>
                                 @endforeach
                             </div>
+                            <div class="error color_error" style="color:red;"></div>
                         </div>
                         <div class="product-form__option-selector" data-selector-type="block">
                             <div class="product-form__option-info">
@@ -132,11 +129,11 @@
                             <div class="block-swatch-list">
                                 @foreach (array_keys(JSON_decode($item->size)) as $key)
                                     <div class="block-swatch">
-                                        <input class="block-swatch__radio visually-hidden" type="radio" name="size" form="product-form-quick-buy-drawer-{{$key}}" id="option-quick-buy-drawer-{{$key}}-2-1" value="{{JSON_decode($item->size)[$key]}}" checked="checked" data-bind-value="option-quick-buy-drawer-{{$key}}-2-value">
-                                        <label class="block-swatch__item" for="option-quick-buy-drawer-1041340874-2-1">{{JSON_decode($item->size)[$key]}}</label>
+                                        <label class="block-swatch__item size" data-value="{{JSON_decode($item->size)[$key]}}">{{JSON_decode($item->size)[$key]}}</label>
                                     </div>
                                 @endforeach
                             </div>
+                            <div class="error size_error" style="color:red;"></div>
                         </div>
                     </product-variants>
                     <div class="product-form__quantity product-1041340874-qty">
@@ -148,7 +145,7 @@
                                     <path fill="currentColor" d="M0 0h10v2H0z"></path>
                                 </svg>
                             </button>
-                            <input type="text" form="product-form-quick-buy-drawer-1041340874" is="input-number" class="quantity-selector__input" inputmode="numeric" name="quantity" autocomplete="off" min="1" value="1" size="2" aria-label="product.form.quantity">
+                            <input type="text" form="product-form-quick-buy-drawer-{{$item->id}}" is="input-number" class="quantity-selector__input" inputmode="numeric" name="quantity" autocomplete="off" min="1" value="1" size="2" aria-label="product.form.quantity">
                             <button type="button" class="quantity-selector__button">
                                 <span class="visually-hidden">cart.general.increase_quantity</span>
                                 <svg focusable="false" width="10" height="10" class="icon icon--plus-big   " viewBox="0 0 10 10">
@@ -158,28 +155,23 @@
                         </quantity-selector>
                     </div>
                     <div class="product-form__buy-buttons">
-                        <form id="product-form-quick-buy-drawer-1041340874" action="/cart/add" accept-charset="UTF-8" enctype="multipart/form-data" is="product-form" data-gtm-form-interact-id="0">
-                            <input type="hidden" name="id" value="1090198029" data-gtm-form-interact-field-id="0">  
-                            <product-payment-container form-id="product-form-quick-buy-drawer-1041340874" class="product-form__payment-container">
-                                <button id="AddToCart" type="submit" is="loader-button" data-use-primary="" data-product-add-to-cart-button="" data-button-content="Thêm vào giỏ hàng" class="product-form__add-button button--outline button button--full button--primary">
-                                    <span class="loader-button__text">Thêm vào giỏ hàng</span>
-                                    <span class="loader-button__loader" hidden="">
-                                        <div class="spinner">
-                                            <svg focusable="false" width="24" height="24" class="icon icon--spinner" viewBox="25 25 50 50">
-                                                <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-width="5"></circle>
-                                            </svg>
-                                        </div>
-                                    </span>
-                                </button>
-                            </product-payment-container>
-                        </form>
+                        <div id="product-form-product-page-{{$item->id}}" accept-charset="UTF-8" enctype="multipart/form-data" >
+                            <input type="hidden" disabled name="id" value="{{$item->id}}">  
+                            <input type="hidden" disabled name="size" value="">  
+                            <input type="hidden" disabled name="color" value="">  
+                            <button 
+                                    is="loader-button" 
+                                    class=" button--outline AddCart button button--primary button--full" >
+                                    Thêm vào giỏ hàng                
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="product-form__view-details">
-                    <a href="https://speedx-fashion-1.myharavan.com/products/vay-xinh-bo-suu-tap-he-thu-dong?variant=1090198029" class="link text--subdued">Xem chi tiết sản phẩm</a>
+                    <a href="{{route('show_details', [$item->id, Str::slug($item->name)])}}" class="link text--subdued">Xem chi tiết sản phẩm</a>
                 </div>
             </div>
-        </quick-buy-drawer> --}}
+        </quick-buy-drawer>
     </div>
     <div class="product-item__info  ">
         <div class="product-item-meta">

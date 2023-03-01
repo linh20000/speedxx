@@ -97,47 +97,5 @@
     @include('frontend.details_product.details_product')
     @include('frontend.details_product.description_product')   
   </div>
-  <script>
-    $('#AddCart').on('click', function(e){
-      e.preventDefault()
-      let _token = $('meta[name="csrf-token"]').attr('content');
-      let productId = $('input[name=id]').val();
-      let size = $('input[name=size]').val();
-      let color = $('input[name=color]').val();
-      $.ajax({
-          type: 'POST',
-					url: "{{ route('addCart.ajax') }}",
-          data: {
-						_token: $('meta[name="csrf-token"]').attr('content'),
-						productId: productId,
-						size: size,
-						color: color,
-					},
-          success: function(response) {
-						toastr.success('áds')
-					},
-          error: function (error) {
-            error.responseJSON.errors.size ? $('.size_error').text(error.responseJSON.errors.size) : $('.size_error').text('')
-            error.responseJSON.errors.color ? $('.color_error').text(error.responseJSON.errors.color) : $('.color_error').text('')
-            
-          }
-      })
-    })
-    $('.color').each(function() {
-      $(this).click(() => {
-        $('.color').css('outline','none')
-        $(this).css('outline', '1px solid #888')
-        let dataColor = $(this).attr('data-value');
-        $('input[name=color]').val(dataColor)
-      })
-    })
-    $('.size').each(function() {
-      $(this).click(() => {
-        $('.size').css('outline','none')
-        $(this).css('outline', '1px solid #888')
-        let datasize = $(this).attr('data-value');
-        $('input[name=size]').val(datasize)
-      })
-    })
-  </script>
+  
 @endsection

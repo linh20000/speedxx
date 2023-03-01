@@ -176,7 +176,7 @@
                     <div class="color-swatch-list">
                         @foreach (array_keys(JSON_decode($product->color)) as $key)
                             <div class="color-swatch ">
-                                <label class="color-swatch__item color"  data-value="{{JSON_decode($product->size)[$key]}}"  style="background-color: {{JSON_decode($product->color)[$key]}}">
+                                <label class="color-swatch__item color"  data-value="{{JSON_decode($product->color)[$key]}}"  style="background-color: {{JSON_decode($product->color)[$key]}}">
                                 <span class="visually-hidden">{{JSON_decode($product->color)[$key]}}</span>
                                 </label>
                             </div>
@@ -208,9 +208,8 @@
                 <input type="hidden" disabled name="id" value="{{$product->id}}">  
                 <input type="hidden" disabled name="size" value="">  
                 <input type="hidden" disabled name="color" value="">  
-                <button id="AddCart" 
-                        is="loader-button" 
-                        class=" button--outline button button--primary button--full" >
+                <button is="loader-button" 
+                        class=" button--outline AddCart button button--primary button--full" >
                         Thêm vào giỏ hàng                
                 </button>
             </div>
