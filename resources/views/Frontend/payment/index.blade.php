@@ -1225,7 +1225,7 @@
                                                                         <div class="field   ">
                                                                             <div class="field-input-wrapper">
                                                                                 <label class="field-label" for="billing_address_address1">Địa chỉ</label>
-                                                                            </div>
+                                                                                        </div>
                                                                             
                                                                         </div>
                                                                 
